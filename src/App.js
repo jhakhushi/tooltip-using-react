@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, {forwardRef} from 'react';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 import './App.css';
+const ColoredTooltip=()=>{
+  return <span style={{color:'yellow',padding:'10px'}}><p>Thanks for hovering i'm a </p>
+    <p style={{textAlign:'centre'}}>tooltip</p></span>
+}
+const CustomChild=forwardRef((prop,ref)=>{
+return (
+  <div ref={ref} id='box'>
+    <div className='hover'>Hover over me!</div>
+    
+  </div>
+)
+})
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      
+  <div style={{paddingBottom:'20px'}}>
+  <Tippy placement='bottom' content={<ColoredTooltip></ColoredTooltip>}>
+       <CustomChild></CustomChild>
+  </Tippy> 
+      
+</div>
+     </div> 
+  );    
 }
-
 export default App;
